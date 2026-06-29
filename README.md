@@ -181,6 +181,7 @@ Run automated tests:
 Mobile UI is served from the same app (templates/mobile). Features include responsive layout, touch-optimized inputs, dark mode, and basic service worker for offline support.
 
 Mobile Features
+
 ✅ Responsive design for all screen sizes
 ✅ Touch-optimized buttons and inputs
 ✅ Dark mode support
@@ -214,57 +215,57 @@ ai-comment-moderator/
 
 - Dual moderation mode (mock + real) so the project is usable without       OpenAI credits. 
   Project is accessible to anyone, regardless of OpenAI credits.
-- Flask Framework.
+- Flask Framework:
   I chose Flask over Django or FastAPI.
   Lightweight, easy to setup, perfect for API development.
   Minimal dependencies.
-- File-Based Logging
-  Used JSON file instead of database
+- File-Based Logging:
+  Used JSON file instead of database.
   No external dependencies, easy to inspect, works on any system.
   Simpler to setup, but less scalable for production.
-- Rate Limiting
+- Rate Limiting:
   Implemented in-memory rate limiting.
-  Prevents abuse while keeping implementation simple
-  10 requests per minute per user
--  Mobile-First Design
-  Built responsive mobile interface
-  Many users access forums from mobile devices
-  Better user experience across all devices
+  Prevents abuse while keeping implementation simple.
+  10 requests per minute per user.
+-  Mobile-First Design:
+  Built responsive mobile interface.
+  Many users access forums from mobile devices.
+  Better user experience across all devices.
 
 ---
 
 ## What I would improve more with time
 
-- Database Integration
-   Replace file-based logging with PostgreSQL or MongoDB
-   Enable search and filtering of logs
-   User authentication and profiles
-- Enhanced Moderation
-   More sophisticated AI prompts
-   Custom rules engine for admins
-   Confidence threshold configuration
-- Notifications
-   Webhooks for flagged content
-   Email notifications for moderation decisions
-   Real-time dashboard for moderators
-- Analytics Dashboard
-   Moderation statistics and trends
-   User reputation scoring
-   Category distribution charts
-- Advanced Features
-   Batch comment moderation
-   Multi-language support
-   Image and link moderation
-   Custom moderation workflows
-- Performance
-  Caching for repeated comments
-  Asynchronous processing
-  Database indexing for logs
-- Security
-   API key rotation
-   JWT authentication
-   HTTPS enforcement
-   Input sanitization
+- Database Integration:
+   Replace file-based logging with PostgreSQL or MongoDB.
+   Enable search and filtering of logs.
+   User authentication and profiles.
+- Enhanced Moderation:
+   More sophisticated AI prompts.
+   Custom rules engine for admins.
+   Confidence threshold configuration.
+- Notifications:
+   Webhooks for flagged content.
+   Email notifications for moderation decisions.
+   Real-time dashboard for moderators.
+- Analytics Dashboard:
+   Moderation statistics and trends.
+   User reputation scoring.
+   Category distribution charts.
+- Advanced Features:
+   Batch comment moderation.
+   Multi-language support.
+   Image and link moderation.
+   Custom moderation workflows.
+- Performance:
+  Caching for repeated comments.
+  Asynchronous processing.
+  Database indexing for logs.
+- Security:
+   API key rotation.
+   JWT authentication.
+   HTTPS enforcement.
+   Input sanitization.
 
 ---
 
