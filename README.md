@@ -1,7 +1,7 @@
 # 🤖 AI Comment Moderator with Appeal System
-
+---
 A REST API that automatically moderates user-submitted comments using AI, with an appeal mechanism for rejected comments. Built for PropertyTribes.com forum context.
-
+---
 ## 📋 Table of Contents
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -17,7 +17,7 @@ A REST API that automatically moderates user-submitted comments using AI, with a
 - [Assumptions](#assumptions)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
-
+---
 ## ✨ Features
 
 - ✅ **AI-Powered Moderation**: Uses OpenAI GPT or mock moderator for intelligent comment filtering
