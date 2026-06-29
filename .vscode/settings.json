@@ -1,0 +1,20 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true,
+    "python.venvPath": "${workspaceFolder}/venv",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "python.testing.pytestEnabled": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        120
+    ],
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    },
+    "git.enabled": true,
+    "git.enableSmartCommit": true,
+    "python.envFile": "${workspaceFolder}/.env"
+}

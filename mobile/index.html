@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#4CAF50">
+    <title>AI Comment Moderator</title>
+    <link rel="stylesheet" href="/static/css/mobile.css">
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="apple-touch-icon" href="/static/images/icons/icon-192x192.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <img src="/static/images/icons/icon-48x48.png" alt="Logo" class="app-logo">
+                <h1>Comment Moderator</h1>
+            </div>
+            <div class="header-status">
+                <span class="status-dot" id="statusDot"></span>
+                <span class="status-text" id="statusText">Loading...</span>
+            </div>
+        </header>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav">
+            <button class="nav-btn active" data-page="moderate" onclick="showPage('moderate')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span>Moderate</span>
+            </button>
+            <button class="nav-btn" data-page="appeal" onclick="showPage('appeal')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M12 8v4"/>
+                    <path d="M12 16h.01"/>
+                </svg>
+                <span>Appeal</span>
+            </button>
+            <button class="nav-btn" data-page="logs" onclick="showPage('logs')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                </svg>
+                <span>Logs</span>
+            </button>
+            <button class="nav-btn" data-page="settings" onclick="showPage('settings')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                <span>Settings</span>
+            </button>
+        </nav>
+
+        <!-- Pages -->
+        <main class="main-content">
+            <!-- Moderate Page -->
+            <section id="moderate-page" class="page active">
+                <div class="card">
+                    <h2>Moderate Comment</h2>
+                    <div class="input-group">
+                        <textarea id="commentInput" placeholder="Enter your comment here..." rows="4"></textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> / 5000
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="moderateComment()">
+                        <span id="moderateBtnText">Analyze Comment</span>
+                        <div class="spinner" id="moderateSpinner" style="display:none;"></div>
+                    </button>
+                </div>
+
+                <div id="resultCard" class="card result-card" style="display:none;">
+                    <div class="result-header">
+                        <span class="result-decision" id="resultDecision">Pending</span>
+                        <span class="result-confidence" id="resultConfidence">0%</span>
+                    </div>
+                    <p class="result-reasoning" id="resultReasoning">...</p>
+                    <div class="result-actions">
+                        <button class="btn-outline" id="appealBtn" onclick="showAppealFromResult()" style="display:none;">
+                            Appeal Decision
+                        </button>
+                        <button class="btn-outline" onclick="resetModeration()">New Comment</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appeal Page -->
+            <section id="appeal-page" class="page">
+                <div class="card">
+                    <h2>Submit Appeal</h2>
+                    <p class="text-muted">Provide additional context to reconsider your rejected comment</p>
+                    
+                    <div class="input-group">
+                        <label>Original Comment</label>
+                        <textarea id="appealComment" placeholder="Enter the original rejected comment..." rows="3"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Appeal Context</label>
+                        <textarea id="appealContext" placeholder="Explain why your comment should be reconsidered..." rows="4"></textarea>
+                        <div class="char-counter">
+                            <span id="appealCharCount">0</span> / 5000
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="submitAppeal()">
+                        <span id="appealBtnText">Submit Appeal</span>
+                        <div class="spinner" id="appealSpinner" style="display:none;"></div>
+                    </button>
+                </div>
+
+                <div id="appealResultCard" class="card result-card" style="display:none;">
+                    <div class="result-header">
+                        <span class="result-decision" id="appealDecision">Pending</span>
+                        <span class="result-confidence" id="appealConfidence">0%</span>
+                    </div>
+                    <p class="result-reasoning" id="appealReasoning">...</p>
+                    <div class="result-actions">
+                        <button class="btn-outline" onclick="resetAppeal()">New Appeal</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Logs Page -->
+            <section id="logs-page" class="page">
+                <div class="card">
+                    <div class="log-header">
+                        <h2>Moderation Logs</h2>
+                        <button class="btn-icon" onclick="refreshLogs()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="23 4 23 10 17 10"/>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="log-list" id="logList">
+                        <div class="log-empty">No logs available</div>
+                    </div>
+                    <button class="btn-outline full-width" onclick="loadMoreLogs()">Load More</button>
+                </div>
+            </section>
+
+            <!-- Settings Page -->
+            <section id="settings-page" class="page">
+                <div class="card">
+                    <h2>Settings</h2>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <label>API Status</label>
+                            <span class="status-badge" id="apiStatusBadge">Checking...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <label>Model</label>
+                            <span class="value-display" id="modelDisplay">Loading...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <label>Max Comment Length</label>
+                            <span class="value-display" id="maxLengthDisplay">5000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <label>Dark Mode</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                                <label for="darkModeToggle"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-outline full-width" onclick="clearCache()">
+                        Clear Local Cache
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation Indicator -->
+        <div class="nav-indicator" id="navIndicator"></div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" style="display:none;">
+        <span id="toastMessage">Message</span>
+        <button onclick="hideToast()">✕</button>
+    </div>
+
+    <script src="/static/js/mobile.js"></script>
+</body>
+</html>

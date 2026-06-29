@@ -1,0 +1,181 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Setup Virtual Environment",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "venv",
+                "venv"
+            ],
+            "windows": {
+                "command": "python"
+            },
+            "linux": {
+                "command": "python3"
+            },
+            "osx": {
+                "command": "python3"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Install Dependencies",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/Scripts/python",
+            "args": [
+                "-m",
+                "pip",
+                "install",
+                "-r",
+                "requirements.txt"
+            ],
+            "windows": {
+                "command": "${workspaceFolder}/venv/Scripts/python"
+            },
+            "linux": {
+                "command": "${workspaceFolder}/venv/bin/python"
+            },
+            "osx": {
+                "command": "${workspaceFolder}/venv/bin/python"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Flask Server",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/Scripts/python",
+            "args": [
+                "app.py"
+            ],
+            "windows": {
+                "command": "${workspaceFolder}/venv/Scripts/python"
+            },
+            "linux": {
+                "command": "${workspaceFolder}/venv/bin/python"
+            },
+            "osx": {
+                "command": "${workspaceFolder}/venv/bin/python"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Tests",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/Scripts/python",
+            "args": [
+                "-m",
+                "pytest",
+                "tests/",
+                "-v"
+            ],
+            "windows": {
+                "command": "${workspaceFolder}/venv/Scripts/python"
+            },
+            "linux": {
+                "command": "${workspaceFolder}/venv/bin/python"
+            },
+            "osx": {
+                "command": "${workspaceFolder}/venv/bin/python"
+            },
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Format Code",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/Scripts/black",
+            "args": [
+                "${workspaceFolder}",
+                "--line-length=120"
+            ],
+            "windows": {
+                "command": "${workspaceFolder}/venv/Scripts/black"
+            },
+            "linux": {
+                "command": "${workspaceFolder}/venv/bin/black"
+            },
+            "osx": {
+                "command": "${workspaceFolder}/venv/bin/black"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Linter",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/Scripts/pylint",
+            "args": [
+                "${workspaceFolder}",
+                "--max-line-length=120"
+            ],
+            "windows": {
+                "command": "${workspaceFolder}/venv/Scripts/pylint"
+            },
+            "linux": {
+                "command": "${workspaceFolder}/venv/bin/pylint"
+            },
+            "osx": {
+                "command": "${workspaceFolder}/venv/bin/pylint"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        }
+    ]
+}
