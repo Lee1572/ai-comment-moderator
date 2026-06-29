@@ -1,10 +1,6 @@
 # 🤖 AI Comment Moderator with Appeal System
 
-<<<<<<< HEAD
 A REST API that automatically moderates user-submitted comments using AI, with an appeal mechanism for rejected comments. Built for PropertyTribes.com forum context.
-=======
-A small REST API to automatically moderate user comments using AI, with an appeal mechanism for rejected comments. Built for PropertyTribes.com forum context.
->>>>>>> 03aaeb3b9fe8557eb762f3c82beafa830383ca69
 
 ---
 
@@ -29,10 +25,7 @@ A small REST API to automatically moderate user comments using AI, with an appea
 - Testing
 - Project structure
 - Key decisions & improvements
-<<<<<<< HEAD
 - Assumptions
-=======
->>>>>>> 03aaeb3b9fe8557eb762f3c82beafa830383ca69
 - Troubleshooting
 - License & credits
 
@@ -40,7 +33,6 @@ A small REST API to automatically moderate user comments using AI, with an appea
 
 ## Features
 
-<<<<<<< HEAD
 - ✅ **AI-Powered Moderation**: Uses OpenAI GPT or mock moderator for intelligent comment filtering
 - ✅ **Appeal System**: Users can appeal rejected comments with additional context
 - ✅ **Rate Limiting**: Prevents API abuse (10 requests per minute per user)
@@ -49,20 +41,11 @@ A small REST API to automatically moderate user comments using AI, with an appea
 - ✅ **Dual Moderation Modes**: Real OpenAI integration + mock moderator for testing
 - ✅ **Graceful Error Handling**: Falls back to manual review on errors
 - ✅ **Categorization**: Comments categorized as spam, hate speech, misinformation, etc.
-=======
-- Dual moderation modes: mock (keyword-based) and real OpenAI integration
-- Appeal submission and review flow
-- Per-user rate limiting
-- Moderation logs in JSON with timestamps and reasoning
-- Mobile-optimized templates and PWA-ready assets
-- Simple file-based storage (no DB required for demo)
->>>>>>> 03aaeb3b9fe8557eb762f3c82beafa830383ca69
 
 ---
 
 ## Tech stack
 
-<<<<<<< HEAD
 | Technology | Purpose |
 |------------|---------|
 | **Flask 3.0** | Web framework |
@@ -70,28 +53,16 @@ A small REST API to automatically moderate user comments using AI, with an appea
 | **Python 3.8+** | Programming language |
 | **Flask-CORS** | Cross-origin resource sharing |
 | **python-dotenv** | Environment variable management |
-=======
-- Python 3.8+
-- Flask 3.0
-- OpenAI (optional — used in real mode)
-- Flask-CORS, python-dotenv
->>>>>>> 03aaeb3b9fe8557eb762f3c82beafa830383ca69
 
 ---
 
 ## Quick start
 
-<<<<<<< HEAD
 ### Prerequisites
 - Python 3.8 or higher
 - pip (Python package manager)
 - Git (optional, for version control)
 - OpenAI API key (optional for mock mode)
-=======
-Prerequisites:
-- Python 3.8+
-- pip
->>>>>>> 03aaeb3b9fe8557eb762f3c82beafa830383ca69
 
 Clone and prepare:
 
@@ -209,7 +180,6 @@ Run automated tests:
 
 Mobile UI is served from the same app (templates/mobile). Features include responsive layout, touch-optimized inputs, dark mode, and basic service worker for offline support.
 
-<<<<<<< HEAD
 Mobile Features
 ✅ Responsive design for all screen sizes
 ✅ Touch-optimized buttons and inputs
@@ -218,8 +188,6 @@ Mobile Features
 ✅ Offline support (with service worker)
 ✅ Character counters and validation
 
-=======
->>>>>>> 03aaeb3b9fe8557eb762f3c82beafa830383ca69
 To view on a phone:
 1. Find the host IP (ipconfig / ifconfig)
 2. Visit http://YOUR_IP:5000 from your phone browser
@@ -244,7 +212,6 @@ ai-comment-moderator/
 
 ## Key decisions
 
-<<<<<<< HEAD
 - Dual moderation mode (mock + real) so the project is usable without       OpenAI credits. 
   Project is accessible to anyone, regardless of OpenAI credits.
 - Flask Framework.
@@ -311,17 +278,6 @@ ai-comment-moderator/
 6. OpenAI: Real integration uses GPT-3.5-turbo or GPT-4
 7. Mock Mode: The mock moderator sufficiently demonstrates all functionality
 8. Platform: Cross-platform compatibility (Windows, Mac, Linux)
-=======
-- Dual moderation mode (mock + real) so the project is usable without OpenAI credits.
-- File-based JSON logging for portability and easy inspection.
-- In-memory rate limiting to keep the system simple for demos.
-
-Planned improvements:
-- Move logs to a database (Postgres/Mongo)
-- Better prompt engineering and admin controls
-- Webhooks/notifications and analytics dashboard
-- Authentication and more robust security (HTTPS, JWT, API key rotation)
->>>>>>> 03aaeb3b9fe8557eb762f3c82beafa830383ca69
 
 ---
 
