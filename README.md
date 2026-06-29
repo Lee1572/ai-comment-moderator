@@ -531,6 +531,7 @@ For issues or questions:
    1. Check the troubleshooting section
    2. Review the logs in moderation_log.json
    3. Ensure your .env file is properly configured
-   4. Verify the server is running: python app.py
-#   U p d a t e  
+   4. Verify the server is running: python app.py 
+#   U p d a t e 
+ 
  
